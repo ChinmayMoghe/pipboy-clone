@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 1200);
     };
     const bootloadEntries = document.querySelectorAll('.bootload-entry');
+    document.body.style.overflow = "hidden";
     [...bootloadEntries].map((bootloadEntry,index)=>{
         setTimeout(() => {
             bootloadEntry.classList.toggle('hide');
@@ -20,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }, 200);
             }
             bootloadEntry.scrollIntoView();
-        },150*index);
+        },130*index);
     });
     const pipboyImage = new Image();
     const pipboyPauseImg = new Image();
