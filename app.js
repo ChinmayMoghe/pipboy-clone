@@ -9,7 +9,19 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector('.pipboy-img-container').classList.add('show');
         }, 1200);
     };
-
+    const bootloadEntries = document.querySelectorAll('.bootload-entry');
+    [...bootloadEntries].map((bootloadEntry,index)=>{
+        setTimeout(() => {
+            bootloadEntry.classList.toggle('hide');
+            const specStatus = bootloadEntry.querySelector('.bootload-spec-status');
+            if(specStatus) {
+                setTimeout(() => {
+                    specStatus.classList.toggle('hide');
+                }, 200);
+            }
+            bootloadEntry.scrollIntoView();
+        },150*index);
+    });
     const pipboyImage = new Image();
     const pipboyPauseImg = new Image();
     pipboyImage.onload = function () {
