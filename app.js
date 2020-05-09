@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const setTimerforpipboy = () => {
         setTimeout(() => {
             document.querySelector('.pipboy-img-container').classList.add('show');
-        }, 1000);
+        }, 1200);
     };
 
     const pipboyImage = new Image();
