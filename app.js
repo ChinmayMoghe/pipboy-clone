@@ -6,23 +6,32 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     const setTimerforpipboy = () => {
         setTimeout(() => {
+            const pipboyAnimatedImg = document.querySelector('.pipboy-success');
             document.querySelector('.pipboy-img-container').classList.add('show');
+            // set the animation end state for step 3 here
         }, 1200);
     };
+    //get bootloader entries to remove class hide - display individual boot entry
     const bootloadEntries = document.querySelectorAll('.bootload-entry');
-    document.body.style.overflow = "hidden";
-    [...bootloadEntries].map((bootloadEntry,index)=>{
+    console.log(bootloadEntries);
+    [...bootloadEntries].map((bootloadEntry, index,arr) => {
+        console.log(arr);
         setTimeout(() => {
             bootloadEntry.classList.toggle('hide');
             const specStatus = bootloadEntry.querySelector('.bootload-spec-status');
-            if(specStatus) {
+            if (specStatus) {
                 setTimeout(() => {
                     specStatus.classList.toggle('hide');
-                }, 200);
+                }, 140);
+            }
+            if(bootloadEntry === arr[arr.length - 1]) {
+                // set the end status for the step 1 animation here..
+                console.log("Bruh !! stop this madness");
             }
             bootloadEntry.scrollIntoView();
-        },130*index);
+        }, 150 * index);
     });
+    // loading images for pipboy loading screen
     const pipboyImage = new Image();
     const pipboyPauseImg = new Image();
     pipboyImage.onload = function () {
@@ -34,4 +43,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     pipboyImage.src = "images/pip-boy-sucess-animate.gif";
     pipboyPauseImg.src = "images/pipboy-success-pause.gif";
+
+    // using animationend event listener to mark end of animation
+    const targetNode = document.querySelector(".os-load-rom");
+    const animationEnd = ()=> {
+        // set the end state of animation for step 2 here...
+        console.log("bruh !! Animation ended");
+    }
+    targetNode.addEventListener("animationend",animationEnd,false);
 });
