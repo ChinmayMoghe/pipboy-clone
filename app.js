@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
         stepTwo: null,
         stepThree: null
     }
+
     const sequencer = {
         initiator: () => {
             console.log("Kickstart");
@@ -100,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
+
     sequenceProxy = new Proxy(sequenceProxy, sequencer);
     document.querySelector(".join-vaulttec-btn").addEventListener('click',function(){
         sequencer.initiator();
