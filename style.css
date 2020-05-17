@@ -351,16 +351,16 @@ span.failed {
     border-right: 0.5em solid transparent;
     white-space: nowrap;
     overflow: hidden;
-    animation : typing 2s steps(44,end) 1s backwards,
-    blinkCursor 500ms steps(44) 11 forwards;
+    animation : typing 2s steps(44,end) backwards,
+    blinkCursor 500ms steps(44) 7 forwards;
 }
 
 .animate-typing-2 {
     border-right: 0.5em solid transparent;
     white-space: nowrap;
     overflow: hidden;
-    animation : typing 2s steps(44,end) 4s backwards,
-    blinkCursor 500ms steps(44) 4s 7 forwards;
+    animation : typing 2s steps(44,end) 4.5s backwards,
+    blinkCursor 500ms steps(44) 2.5s 7 forwards;
 }
 
 .animate-typing-3 {
@@ -368,7 +368,7 @@ span.failed {
     white-space: nowrap;
     overflow: hidden;
     animation : typing 2s steps(44,end) 8s backwards,
-    blinkCursor 500ms steps(44) 8s 7 forwards;
+    blinkCursor 500ms steps(44) 6.5s 7 forwards;
 }
 
 .animate-typing-4 {
@@ -376,7 +376,7 @@ span.failed {
     white-space: nowrap;
     overflow: hidden;
     animation : typing 2s steps(44,end) 12s backwards,
-    blinkCursor 500ms steps(44) 12s 7 forwards;
+    blinkCursor 500ms steps(44) 10.5s 7 forwards;
 }
 
 .animate-typing-5 {
@@ -384,7 +384,7 @@ span.failed {
     white-space: nowrap;
     overflow: hidden;
     animation : typing 2s steps(44,end) 16s backwards,
-    blinkCursor 500ms steps(44) 16s 7 forwards;
+    blinkCursor 500ms steps(44) 14.5s 7 forwards;
 }
 
 .animate-typing-6 {
@@ -392,7 +392,7 @@ span.failed {
     white-space: nowrap;
     overflow: hidden;
     animation : typing 2s steps(44,end) 20s backwards,
-    blinkCursor 500ms steps(44) 20s 7 forwards;
+    blinkCursor 500ms steps(44) 18.5s 7 forwards;
 }
 
 .animate-typing-7 {
@@ -400,15 +400,15 @@ span.failed {
     white-space: nowrap;
     overflow: hidden;
     animation : typing 2s steps(44,end) 24s backwards,
-    blinkCursor 500ms steps(44) 24s 7 forwards;
+    blinkCursor 500ms steps(44) 22.5s 7 forwards;
 }
 
 .animate-typing-8 {
     border-right: 0.5em solid transparent;
     white-space: nowrap;
     overflow: hidden;
-    animation : typing 3s steps(44,end) 29s backwards,
-    blinkCursor 500ms steps(44) 29s 7 forwards;
+    animation : typing 4s steps(44,end) 26s backwards,
+    blinkCursor 500ms steps(44) 26.5s 11 forwards;
 }
 
 @media screen and (max-width:500px) {

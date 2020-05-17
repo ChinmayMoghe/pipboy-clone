@@ -49,9 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 setTimeout(() => {
                     sequenceProxy["stepTwo"] = true;
                     stepTwo.classList.toggle("hide");
-                }, 100);
+                }, 1000);
             }
-            targetNode.addEventListener("animationend", animationEnd, false);
+            targetNode.addEventListener("animationend", animationEnd);
         },
         stepThree: () => {
             /**
