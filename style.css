@@ -232,6 +232,7 @@ body:after {
     height: 100%;
     overflow-y: scroll;
     margin: 0 auto;
+    scrollbar-width: none;
 }
 
 .bootloader-animation::-webkit-scrollbar {
