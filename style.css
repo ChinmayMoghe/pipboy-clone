@@ -635,20 +635,4 @@ ul.navbar-main li a:focus::after {
     justify-content: flex-end;
 }
 
-@media screen and (orientation:potrait) {
-    .container {
-        width: 100%;
-    }
-    .bootload-entry {
-        font-size: 1.2em;
-    }
-    .bootload-spec {
-        width:70%;
-    }
-    body::after {
-        background-size: 100% 2px;
-    }
-    .step-0 .join-vaulttec-img {
-        width: 70%;
-    }
-}
+
