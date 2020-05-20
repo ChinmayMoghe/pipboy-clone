@@ -1,11 +1,27 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // state object used to maintain state of app
+    const imagePaths = ["images/LxjzCn.png","images/pip-boy-sucess-animate.gif","images/pipboy-success-pause.gif","images/walking-pipboy.gif"];
+    const checkImagesLoaded = path => new Promise(resolve=>{
+        const img = new Image();
+        img.onload = () => resolve(true)
+        img.src = path;
+    });
+    const loadImages = (imagePaths)=>Promise.all(imagePaths.map(checkImagesLoaded));
+    loadImages(imagePaths).then(loaded=>{
+        const allImagesLoaded = loaded.reduce((allStatus,currentStatus)=>allStatus && currentStatus);
+        if(allImagesLoaded) {
+            document.querySelector('.loader').classList.toggle('hide');
+            document.querySelector('.step-0').classList.toggle('hide');
+        }
+    });
     let sequenceProxy = {
         initiator: null,
         stepOne: null,
         stepTwo: null,
-        stepThree: null
+        stepThree: null,
+        stepFour: null
     }
-
+    //proxy handler object - used to call functions on set trap for Proxy
     const sequencer = {
         initiator: () => {
             console.log("Kickstart");
@@ -29,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                     if (bootloadEntry === arr[arr.length - 1]) {
                         // set the end status for the step 1 animation here..
-                        console.log("Bruh !! stop this madness");
                         setTimeout(() => {
                             stepOne.classList.toggle('hide');
                             sequenceProxy["stepOne"] = true;
@@ -46,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const targetNode = document.querySelector(".os-load-rom");
             const animationEnd = () => {
                 // set the end state of animation for step 2 here...
-                console.log("bruh !! Animation ended");
                 setTimeout(() => {
                     sequenceProxy["stepTwo"] = true;
                     stepTwo.classList.toggle("hide");
@@ -55,36 +69,25 @@ document.addEventListener("DOMContentLoaded", function () {
             targetNode.addEventListener("animationend", animationEnd);
         },
         stepThree: () => {
-            /**
-     * @description A function to pause pipboy animation gif.
-     *
-     * It displays last frame (inside a pseudo selector) of gif animation to create effect of pausing the animation.
-     */     const stepThree = document.querySelector('.step-3');
+            const stepThree = document.querySelector('.step-3');
             stepThree.classList.toggle('hide');
             const setTimerforpipboy = () => {
                 setTimeout(() => {
-                    const pipboyAnimatedImg = document.querySelector('.pipboy-success');
                     document.querySelector('.pipboy-img-container').classList.add('show');
                     // set the animation end state for step 3 here
                     setTimeout(() => {
                         stepThree.classList.toggle('hide');
-                        sequenceProxy[stepThree] = true;
+                        sequenceProxy["stepThree"] = true;
                     }, 100);
                 }, 2200);
             };
-
-            // loading images for pipboy loading screen
-            const pipboyImage = new Image();
-            const pipboyPauseImg = new Image();
-            pipboyImage.onload = function () {
-                console.log("Loaded animated image");
-                setTimerforpipboy();
-            };
-            pipboyPauseImg.onload = function () {
-                console.log("Loaded pause image");
-            }
-            pipboyImage.src = "images/pip-boy-sucess-animate.gif";
-            pipboyPauseImg.src = "images/pipboy-success-pause.gif";
+            setTimerforpipboy();
+        },
+        stepFour: () => {
+            const stepFour = document.querySelector(".step-4");
+            stepFour.classList.toggle("hide");
+            document.querySelector(".navbar-main li:first-child a").focus();
+            sequenceProxy["stepFour"] = true;
         },
         callNextStep(target) {
             const nextStep = Object.entries(target).filter(entry => !entry[1]);
@@ -101,8 +104,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
-
+    // create a Proxy to observe steps boolean value
     sequenceProxy = new Proxy(sequenceProxy, sequencer);
+    //initiate a chain reaction
     document.querySelector(".join-vaulttec-btn").addEventListener('click',function(){
         sequencer.initiator();
     });
