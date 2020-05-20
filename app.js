@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
     // state object used to maintain state of app
-    const imagePaths = ["images/LxjzCn.png","images/pip-boy-sucess-animate.gif","images/walking-pipboy.gif"];
-    const checkImagesLoaded = path => new Promise(resolve=>{
+    const imagePaths = ["images/LxjzCn.png", "images/pip-boy-sucess-animate.gif", "images/walking-pipboy.gif"];
+    const checkImagesLoaded = path => new Promise(resolve => {
         const img = new Image();
         img.onload = () => resolve(true)
         img.src = path;
     });
-    const loadImages = (imagePaths)=>Promise.all(imagePaths.map(checkImagesLoaded));
-    loadImages(imagePaths).then(loaded=>{
-        const allImagesLoaded = loaded.reduce((allStatus,currentStatus)=>allStatus && currentStatus);
-        if(allImagesLoaded) {
+    const loadImages = (imagePaths) => Promise.all(imagePaths.map(checkImagesLoaded));
+    loadImages(imagePaths).then(loaded => {
+        const allImagesLoaded = loaded.reduce((allStatus, currentStatus) => allStatus && currentStatus);
+        if (allImagesLoaded) {
             document.querySelector('.loader').classList.toggle('hide');
             document.querySelector('.step-0').classList.toggle('hide');
         }
@@ -91,8 +91,10 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         callNextStep(target) {
             const nextStep = Object.entries(target).filter(entry => !entry[1]);
-            const nextStepProperty = nextStep[0][0];
-            this[nextStepProperty]();
+            if (nextStep) {
+                const nextStepProperty = nextStep[0][0];
+                this[nextStepProperty]();
+            }
         },
         set(target, property, value) {
             if (property in target && value) {
@@ -107,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // create a Proxy to observe steps boolean value
     sequenceProxy = new Proxy(sequenceProxy, sequencer);
     //initiate a chain reaction
-    document.querySelector(".join-vaulttec-btn").addEventListener('click',function(){
+    document.querySelector(".join-vaulttec-btn").addEventListener('click', function () {
         sequencer.initiator();
     });
 });
