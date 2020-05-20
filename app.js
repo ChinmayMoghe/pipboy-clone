@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         callNextStep(target) {
             const nextStep = Object.entries(target).filter(entry => !entry[1]);
-            if (nextStep) {
+            if (nextStep.length>0) {
                 const nextStepProperty = nextStep[0][0];
                 this[nextStepProperty]();
             }
