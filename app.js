@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     // state object used to maintain state of app
-    const imagePaths = ["images/LxjzCn.png","images/pip-boy-sucess-animate.gif","images/pipboy-success-pause.gif","images/walking-pipboy.gif"];
+    const imagePaths = ["images/LxjzCn.png","images/pip-boy-sucess-animate.gif","images/walking-pipboy.gif"];
     const checkImagesLoaded = path => new Promise(resolve=>{
         const img = new Image();
         img.onload = () => resolve(true)
