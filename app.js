@@ -73,12 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
             stepThree.classList.toggle('hide');
             const setTimerforpipboy = () => {
                 setTimeout(() => {
-                    document.querySelector('.pipboy-img-container').classList.add('show');
-                    // set the animation end state for step 3 here
-                    setTimeout(() => {
-                        stepThree.classList.toggle('hide');
-                        sequenceProxy["stepThree"] = true;
-                    }, 100);
+                    stepThree.classList.toggle('hide');
+                    sequenceProxy["stepThree"] = true;
                 }, 2200);
             };
             setTimerforpipboy();
@@ -91,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         callNextStep(target) {
             const nextStep = Object.entries(target).filter(entry => !entry[1]);
-            if (nextStep.length>0) {
+            if (nextStep.length > 0) {
                 const nextStepProperty = nextStep[0][0];
                 this[nextStepProperty]();
             }
